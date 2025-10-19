@@ -122,7 +122,7 @@ public class Bb implements Serializable {
             return null;
         }
         // Entourer la réponse avec "||".
-        this.reponse = "||";
+        this.reponse = "|| Votre Question est \"" + question + "\"\n , Voici ma réponse :";
         // Si la conversation n'a pas encore commencé, ajouter le rôle système au début de la réponse
         if (this.conversation.isEmpty()) {
             // Ajouter le rôle système au début de la réponse
@@ -130,7 +130,19 @@ public class Bb implements Serializable {
             // Invalide le bouton pour changer le rôle système
             this.roleSystemeChangeable = false;
         }
-        this.reponse += question.toLowerCase(Locale.FRENCH) + "||";
+
+        //Transformation de la question en minuscules
+        String questionMinuscule = question.toLowerCase(Locale.FRENCH);
+
+        //Compter le nombre de caractères
+        int nbrCaracteres = questionMinuscule.length();
+
+        //Réponse finale
+        this.reponse += "Réponse En minuscule " + questionMinuscule + "\n";
+        this.reponse += "Nombre de caractères : " + nbrCaracteres + " ||";
+
+
+        //this.reponse += question.toLowerCase(Locale.FRENCH) + "||";
         // La conversation contient l'historique des questions-réponses depuis le début.
         afficherConversation();
         return null;
