@@ -122,7 +122,8 @@ public class Bb implements Serializable {
             return null;
         }
         // Entourer la réponse avec "||".
-        this.reponse = "|| Votre Question est \"" + question + "\"\n , Voici ma réponse :";
+        String questionMaj = question.toUpperCase(Locale.FRENCH) + "?";
+        this.reponse = "|| Votre Question est \"" + questionMaj + "\"\n , ma réponse est la suivante :";
         // Si la conversation n'a pas encore commencé, ajouter le rôle système au début de la réponse
         if (this.conversation.isEmpty()) {
             // Ajouter le rôle système au début de la réponse
